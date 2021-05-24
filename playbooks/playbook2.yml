@@ -1,0 +1,18 @@
+---
+- hosts: first_group
+  roles:    
+    - role: amtega.tcpwrappers
+      vars:
+        tcpwrappers_allow:
+          - daemons:
+              - sshd
+            clients:
+              - 192.168.0.109
+              - LOCAL
+            state: present
+        tcpwrappers_deny:
+          - daemons:
+              - ALL
+            clients:
+              - ALL
+            state: present

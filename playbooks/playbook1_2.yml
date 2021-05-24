@@ -1,0 +1,10 @@
+---
+- hosts: first_group
+  user: root
+  tasks:    
+  - name: Change config file
+    lineinfile:
+       path: /etc/pam.d/system-auth
+       regexp: 'password   requisite pam_pwquality.so try_first_pass local_users_only retry=3 authtok_type='
+       state: present
+       line: 'password   requisite pam_pwquality.so try_first_pass local_users_only retry=3 authtok_type= reject_username enforce_for_root'
